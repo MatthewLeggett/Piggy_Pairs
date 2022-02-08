@@ -2,8 +2,10 @@ const cards = document.querySelectorAll('.card');
 
 let hasFlippedCard = false;
 let firstCard, secondCard;
+let freezeOut = false; 
 
 function flipCard() {
+  if (freezeOut) return;
   this.classList.add('flip');
 
   if (!hasFlippedCard) {
@@ -18,9 +20,11 @@ function flipCard() {
        secondCard.removeEventListener('click', flipCard);
       }
       else {
+        freezeOut = true;
         setTimeout(() => {
         firstCard.classList.remove('flip')
         secondCard.classList.remove('flip')
+        freezeOut = false;
         }, 800);
       }
      }
