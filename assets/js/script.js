@@ -7,6 +7,7 @@ let freezeOut = false;
 function flipCard() {
   if (freezeOut) return;
   this.classList.add('flip');
+  if(this === firstCard) return;
 
   if (!hasFlippedCard) {
       hasFlippedCard = true;
@@ -18,19 +19,23 @@ function flipCard() {
      if (firstCard.dataset.framework === secondCard.dataset.framework) {
        firstCard.removeEventListener('click', flipCard);
        secondCard.removeEventListener('click', flipCard);
+       reset()
       }
       else {
         freezeOut = true;
         setTimeout(() => {
         firstCard.classList.remove('flip')
         secondCard.classList.remove('flip')
-        freezeOut = false;
+        reset()
         }, 800);
       }
      }
       
   } 
-
+function reset() {
+  [hasFlippedCard, freezeOut] = [false, false];
+  [firstCard, secondCard] = [null, null];
+}
 
 
 cards.forEach(card => card.addEventListener('click', flipCard));
