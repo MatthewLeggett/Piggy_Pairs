@@ -20,22 +20,28 @@ function flipCard() {
        firstCard.removeEventListener('click', flipCard);
        secondCard.removeEventListener('click', flipCard);
        reset()
-      }
-      else {
-        freezeOut = true;
-        setTimeout(() => {
-        firstCard.classList.remove('flip')
-        secondCard.classList.remove('flip')
-        reset()
+      } else {
+          freezeOut = true;
+          setTimeout(() => {
+          firstCard.classList.remove('flip')
+          secondCard.classList.remove('flip')
+          reset()
         }, 800);
       }
      }
       
-  } 
-function reset() {
+} 
+
+function resetGame() {
   [hasFlippedCard, freezeOut] = [false, false];
   [firstCard, secondCard] = [null, null];
 }
 
+(function shuffleCards() {
+  cards.forEach(card => {
+    let randomPos = Math.floor(Math.random() * 15);
+    card.style.order = randomPos;
+  });
+})();
 
 cards.forEach(card => card.addEventListener('click', flipCard));
