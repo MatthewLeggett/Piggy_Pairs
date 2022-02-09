@@ -1,4 +1,4 @@
-const cards = document.querySelectorAll('.card');
+let cards = document.querySelectorAll('.card');
 
 let hasFlippedCard = false;
 let firstCard, secondCard;
@@ -25,7 +25,7 @@ function flipCard() {
           setTimeout(() => {
           firstCard.classList.remove('flip')
           secondCard.classList.remove('flip')
-          reset()
+          resetGame()
         }, 800);
       }
      }
