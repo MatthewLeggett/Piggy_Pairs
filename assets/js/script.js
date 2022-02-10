@@ -45,3 +45,4 @@ function resetGame() {
 })();
 
 cards.forEach(card => card.addEventListener('click', flipCard));
+
