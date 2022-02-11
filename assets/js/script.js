@@ -44,5 +44,15 @@ function resetGame() {
   });
 })();
 
-cards.forEach(card => card.addEventListener('click', flipCard));
+function domLoad () {
+  cards.forEach(card => card.addEventListener('click', flipCard));
+}
+
+if (document.readyState === "loading"){
+  	document.addEventListener("DOMContentLoaded", domLoad);
+  
+} else {
+  domLoad();
+}
+
 
